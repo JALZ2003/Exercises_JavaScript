@@ -209,16 +209,71 @@ function valorMaximoPropiedadObjeto(list, propiedad) {
 
 // Ejercicios # 18
 
-
+function cadenaConvertirURL(cadena) {
+    return cadena.split(" ").join("/");
+}
+// console.log(cadenaConvertirURL("esto es una url"));
 
 // Ejercicios # 19
 
+function calcularPromedioPropiedad(list, propiedad) {
+    let listMap = list.map(objeto => propiedad in objeto ? objeto[propiedad] : 0);
+    return listMap.reduce((acc, val) => acc + val) / listMap.length;
+}
+// console.log(calcularPromedioPropiedad(arregloObjetos, 'valor'));
+
 // Ejercicios # 20
+
+function diferenciaFechas(fecha1) {
+    fecha1 = fecha1.split("/");
+    fecha1 = new Date(fecha1[2], fecha1[1] - 1, fecha1[0]);
+    const fechaActual = new Date();
+    let yeear = fecha1.getFullYear();
+    let day = fecha1.getDate();
+    let month = fecha1.getMonth();
+    let yearActual = fechaActual.getFullYear();
+    let dayActual = fechaActual.getDate();
+    let monthActual = fechaActual.getMonth();
+    return `Diferencia de ${yearActual - yeear} años, ${monthActual - month} meses y ${dayActual - day} días`;
+}
+// console.log(diferenciaFechas('19/02/2003'));
 
 // Ejercicios # 21
 
+function convertirFechaAFormato(fecha) {
+    return fecha.toLocaleString(undefined, { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' });
+}
+// console.log(convertirFechaAFormato(new Date()));
+
 // Ejercicios # 22
+
+function diferenciaFechasDias(fecha1, fecha2) {
+    const unDia = 24 * 60 * 60 * 1000; // Cantidad de milisegundos en un día
+    const tiempo1 = fecha1.getTime(); // Obtener el tiempo en milisegundos de la fecha1
+    const tiempo2 = fecha2.getTime(); // Obtener el tiempo en milisegundos de la fecha2
+
+    const diferencia = Math.abs(tiempo1 - tiempo2); // Obtener la diferencia en milisegundos
+    const dias = Math.round(diferencia / unDia); // Calcular la diferencia en días
+
+    return "Diferencia Dias: " + dias;
+}
+const fecha1 = new Date('2003-02-19');
+const fecha2 = new Date('2023-04-29');
+// console.log(diferenciaFechasDias(fecha1, fecha2));
 
 // Ejercicios # 23
 
+let arreglo = [1, 2, 3, 4, "Hola", true, false, undefined, 8, 10, "Gato", null];
+
+function eliminarNulosOIndefinidos(list) {
+    return list.filter(element => element != undefined || element != null);
+}
+// console.log(eliminarNulosOIndefinidos(arreglo));
+
 // Ejercicios # 24
+
+let objet = { name: "Jannus", apellido: 'Largo', edad: 20, mascota: "Gato" };
+function numeroElementosObjeto(objeto) {
+    return Object.keys(objeto).length;
+}
+// console.log(numeroElementosObjeto(objet));
