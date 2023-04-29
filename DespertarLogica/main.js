@@ -111,21 +111,105 @@ function diferenciaEntreDatos(list1, list2) {
 
 // Ejercicios # 10
 
+// este ejercicios esta repetido, lo puedes encontrar en el primero de este archivo main.js
+
 // Ejercicios # 11
+
+const matriz = [
+    [0, 1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10, 2],
+    [10, 11, 12, 13, 54, 7]
+]
+
+function mayorMenor(matriz) {
+    let minimo = matriz[0][0];
+    let maximo = matriz[0][0];
+    for (let i = 0; i < matriz.length; i++) {
+        for (let j = 0; j < matriz[i].length; j++) {
+            if (matriz[i][j] > maximo) {
+                maximo = matriz[i][j];
+            }
+            if (matriz[i][j] < minimo) {
+                minimo = matriz[i][j];
+            }
+        }
+    }
+    return "Maximo: " + maximo + "\n" +
+        "Minimo: " + minimo;
+}
+// console.log(mayorMenor(matriz));
 
 // Ejercicios # 12
 
+const objeto = { clave1: "valor1", clave2: "valor2", clave3: "valor1", clave4: "valor3", clave5: "valor2" };
+function eliminarDuplicadoObjetos(objeto) {
+    const valoresUnicos = [...new Set(Object.values(objeto))];
+    const objetoSinDuplicado = {};
+    for (const clave in objeto) {
+        const valor = objeto[clave];
+        if (valoresUnicos.includes(valor)) {
+            objetoSinDuplicado[clave] = valor;
+            valoresUnicos.splice(valoresUnicos.indexOf(valor), 1);
+        }
+    }
+    return objetoSinDuplicado;
+}
+// eliminarDuplicadoObjetos(objeto);
+
 // Ejercicios # 13
+
+function ordenarMatrizDesc(matriz) {
+    let arregloUnico = matriz.reduce((acc, val) => acc.concat(val), []);
+    arregloUnico.sort((a, b) => b - a);
+    const matrizOrdenada = [];
+    for (let i = 0; i < matriz.length; i++) {
+        const filaOrdenada = arregloUnico.splice(0, matriz[i].length);
+        matrizOrdenada.push(filaOrdenada);
+    }
+    return matrizOrdenada;
+}
+// ordenarMatrizDesc(matriz);
 
 // Ejercicios # 14
 
+function formatoTitulo(cadena) {
+    return cadena.toLowerCase().split(" ").map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1)).join(" ");
+}
+// console.log(formatoTitulo("ready player One"));
+
 // Ejercicios # 15
+
+function numeroDePalabrasCadena(cadena) {
+    return cadena.split(" ").length;
+}
+// console.log(numeroDePalabrasCadena("ready player Two, si no estoy mal esto es una prueba"));
 
 // Ejercicios # 16
 
+const arregloObjetos = [
+    { valor: 5, valor2: 10 },
+    { valor: 10, valor2: 11 },
+    { valor: 2, valor2: 12 },
+    { valor: 3, valor2: 13 },
+    { valor: 6, valor2: 15 },
+    { valor: 7, valor2: 16 },
+]
+
+function sumarPropiedadObjeto(list, propiedad) {
+    return list.map(objeto => propiedad in objeto ? objeto[propiedad] : 0).reduce((acc, val) => acc + val);
+}
+// console.log(sumarPropiedadObjeto(arregloObjetos, 'valor'));
+
 // Ejercicios # 17
 
+function valorMaximoPropiedadObjeto(list, propiedad) {
+    return list.map(objeto => propiedad in objeto ? objeto[propiedad] : 0).reduce((acc, val) => acc > val ? acc : val);
+}
+// console.log(valorMaximoPropiedadObjeto(arregloObjetos, 'valor2'));
+
 // Ejercicios # 18
+
+
 
 // Ejercicios # 19
 
